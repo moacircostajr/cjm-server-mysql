@@ -1,0 +1,13 @@
+#criar container no docker com o mysql 8
+docker run --name cjm-mysql -e MYSQL_ROOT_PASSWORD=root -d mysql:8
+
+#rodar docker com banco de dados
+docker container start cjm-mysql
+
+#verificar containers ativos
+docker container ls
+
+#apresentar o ip de um container docker
+docker inspect --format '{{ .NetworkSettings.IPAddress }}' [CONTAINER ID]
+
+docker run --name DbCjmFp -v /home/admin/api/cjmfp/dados:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root -h 172.17.0.1 -d mysql:latest
